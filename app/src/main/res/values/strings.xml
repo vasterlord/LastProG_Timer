@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">TimerBench</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="dp25" />
+    <string name="dp26">26dp</string>
+    <string name="set_rounds_sets">Set rounds/sets</string>
+    <string name="Rounds">Set rounds/sets</string>
+    <string name="Prep">Set preparing time</string>
+    <string name="workingtime">Set working time</string>
+    <string name="Prepar">Set preparing time</string>
+    <string name="Rest">Set resting time</string>
+    <string name="Start">Start</string>
+    <string name="Reset">Reset</string>
+    <string name="Me">Some</string>
+    <string name="My">My</string>
+    <string name="Ivan">Ivan</string>
+    <string name="Developers"><![CDATA[Created students of College of Natural Sciences of Ivan Franko Lviv National University of group KNK - 31 Mylian Yulian&Ryduk Ivan.]]></string>
+    <string name="partTime">Title of part of time</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

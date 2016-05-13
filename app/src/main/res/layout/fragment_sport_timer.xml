@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SportTimer">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pincers"
+        android:visibility="visible"
+        android:layout_marginTop="58dp">
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/npHours"
+            android:contextClickable="false"
+            android:background="#ffffff"
+            android:solidColor="#38f244"
+            android:layout_weight="0.2" />
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/npMinute"
+            android:contextClickable="false"
+            android:background="#ffffff"
+            android:solidColor="#d338f2"
+            android:layout_weight="0.2" />
+
+        <NumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/npSecond"
+            android:contextClickable="false"
+            android:background="#ffffff"
+            android:solidColor="#2bf3c1"
+            android:layout_weight="0.2" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Settings"
+        android:layout_weight="0"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal|top">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#fbdada"
+            android:id="@+id/Options">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="| Set rounds/sets-->"
+                android:id="@+id/btnRounds"
+                android:textColor="#12ffb8"
+                android:textSize="@dimen/dp22"
+                android:background="#050505" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set preparing time-->"
+                android:id="@+id/btnPrepare"
+                android:textColor="#b012ff"
+                android:textSize="@dimen/dp22"
+                android:background="#9ee9fc" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set working time-->"
+                android:id="@+id/btnWork"
+                android:textColor="#ff1259"
+                android:textSize="@dimen/dp22"
+                android:background="#75fba4" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Set resting time |"
+                android:id="@+id/btnRest"
+                android:textColor="#0586f7"
+                android:textSize="@dimen/dp22"
+                android:background="#f7fb7c" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Start"
+        android:id="@+id/btnStart"
+        android:textColor="#1e12ff"
+        android:textSize="@dimen/dp21"
+        android:background="#f9f45b"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="63dp" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="65dp"
+        android:layout_marginTop="50dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff1a79"
+        android:background="#ffffff"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="0dp"
+        android:text="00:00:00"
+        android:layout_marginBottom="0dp"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Reset"
+        android:id="@+id/btnStop"
+        android:layout_marginLeft="0dp"
+        android:textColor="#f5171b"
+        android:textSize="@dimen/dp21"
+        android:background="#b6ff9d"
+        android:layout_gravity="center"
+        android:layout_marginTop="63dp"
+        android:layout_marginRight="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txtTittle"
+        android:layout_gravity="center"
+        android:textColor="#b931fe"
+        android:textSize="38dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="113dp"
+        android:visibility="visible"
+        android:textStyle="bold|italic"
+        android:layout_marginRight="0dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="|"
+        android:id="@+id/txtSplit"
+        android:layout_gravity="center"
+        android:layout_marginTop="57dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="36dp"
+        android:textSize="47dp"
+        android:textColor="#ff0000"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edRounds"
+        android:layout_gravity="right|center_vertical"
+        android:textStyle="normal|bold|italic"
+        android:numeric="integer"
+        android:hint="Rounds"
+        android:layout_marginTop="63dp"
+        android:textSize="@dimen/dp25" />
+
+</FrameLayout>
