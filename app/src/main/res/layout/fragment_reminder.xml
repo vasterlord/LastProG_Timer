@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="timerbench.com.timerbench.Reminder"
-    android:background="#ebc1fe">
+    tools:context="timerbench.com.timerbench.Reminder">
 
     <!-- TODO: Update blank fragment layout -->
 
