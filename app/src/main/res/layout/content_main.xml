@@ -20,21 +20,18 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ScrollMenu">
+        android:id="@+id/ScrollMenu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentLeft="false"
-            android:id="@+id/MenuOptions"
-            android:background="#519bfc"
-            android:weightSum="1">
+            android:layout_height="match_parent"
+            android:id="@+id/MenuOptions">
 
             <Button
-                android:layout_width="69dp"
+                android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:text="Sport timer"
                 android:id="@+id/btnSportTimer"
@@ -43,25 +40,25 @@
                 android:onClick="onClick" />
 
             <Button
-                android:layout_width="67dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Stopwatch"
                 android:id="@+id/btnStopwatch"
                 android:background="#feee72"
                 android:textColor="#ff282c"
-                android:layout_marginLeft="65dp"
+                android:layout_marginLeft="35dp"
                 android:onClick="onClick" />
 
             <Button
-                android:layout_width="48dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Reminder"
                 android:id="@+id/btnReminder"
                 android:background="#feee72"
                 android:textColor="#ff282c"
-                android:layout_marginLeft="68dp"
-                android:onClick="onClick" />
-
+                android:layout_marginLeft="35dp"
+                android:onClick="onClick"
+                android:layout_weight="673.50" />
         </LinearLayout>
     </HorizontalScrollView>
 
