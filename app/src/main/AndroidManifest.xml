@@ -28,6 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Ayarm_Activity" />
+        <activity android:name=".TimeActivity"></activity>
     </application>
 
 </manifest>

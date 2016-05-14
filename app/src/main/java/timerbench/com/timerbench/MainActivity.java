@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 //              Intent intent =;
 //                startActivity( new Intent(this, AlyarnActivity.class));
 
-//                startActivity(new Intent(this, Alyarm.class));
+               startActivity(new Intent(this, Ayarm_Activity.class));
 
                 btnSportTimer.setTextSize(15);
                 btnReminder.setTextSize(20);
