@@ -21,14 +21,7 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SportTimer.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SportTimer#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Stopwatch extends Fragment {
     static String PREFS_NAME = "StopWatchState";
     private boolean backPressed;

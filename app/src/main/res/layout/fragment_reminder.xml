@@ -6,54 +6,11 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="230dp"
-        android:id="@+id/img_Fire_Dragon"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ognennyjdrakon"
-        android:layout_gravity="center_horizontal|top" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Тут має бути нагадування ;)"
-        android:id="@+id/textView3"
-        android:layout_gravity="center"
-        android:layout_marginTop="70dp"
-        android:textColor="#ff0105" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="P.S. King Julian ;)"
-        android:id="@+id/textView4"
-        android:layout_gravity="right|bottom"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="10dp"
-        android:textColor="#ff7700" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Натисни!!!"
-        android:id="@+id/btnPress"
-        android:layout_gravity="left|bottom"
-        android:layout_marginBottom="65dp"
-        android:background="#ffffff"
-        android:textColor="#7c18ff"
-        android:layout_marginLeft="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/txtFire_Dragon"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textColor="#ff7700" />
+        android:text="New Button"
+        android:id="@+id/button"
+        android:layout_gravity="center" />
 </FrameLayout>

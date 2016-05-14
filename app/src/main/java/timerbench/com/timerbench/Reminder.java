@@ -69,14 +69,16 @@ public class Reminder extends Fragment {
                              Bundle savedInstanceState) {
         View v;
         v = inflater.inflate(R.layout.fragment_reminder, null);
-        btnPress = (Button) v.findViewById(R.id.btnPress);
-        txtFire_Dragon = (TextView) v.findViewById(R.id.txtFire_Dragon);
-        btnPress.setOnClickListener(new OnClickListener() {
+
+        Button button = (Button) v.findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtFire_Dragon.setText(" =====> Fire Dragon <====");
+
             }
         });
+
         return v;
     }
 

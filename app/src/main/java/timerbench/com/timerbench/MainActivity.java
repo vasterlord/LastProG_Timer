@@ -2,6 +2,7 @@ package timerbench.com.timerbench;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.hardware.Camera;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 
 
+
+
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 @SuppressLint("NewApi")
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     SportTimer sportTimer = new SportTimer();
     Stopwatch stopwatch = new Stopwatch();
     Reminder reminder = new Reminder();
-    Dev dev;
+
+
     Typeface tf;
     FragmentManager fTrans = getSupportFragmentManager();
     private Camera mCamera;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Sport&Fighting Timer");
         fTrans.beginTransaction()
                 .replace(R.id.fragreplace, sportTimer).commit();
+
         btnSportTimer = (Button) findViewById(R.id.btnSportTimer);
         btnStopwatch = (Button) findViewById(R.id.btnStopwatch);
         btnReminder = (Button) findViewById(R.id.btnReminder);
@@ -50,16 +55,32 @@ public class MainActivity extends AppCompatActivity {
                 setTitle("Sport&Fighting Timer");
                 fTrans.beginTransaction()
                         .replace(R.id.fragreplace, sportTimer).commit();
+                btnSportTimer.setTextSize(20);
+                btnReminder.setTextSize(15);
+                btnStopwatch.setTextSize(15);
+
                 break;
             case R.id.btnStopwatch:
                 setTitle("Stopwatch");
                 fTrans.beginTransaction()
                         .replace(R.id.fragreplace, stopwatch).commit();
+                btnSportTimer.setTextSize(15);
+                btnReminder.setTextSize(15);
+                btnStopwatch.setTextSize(20);
                 break;
             case R.id.btnReminder:
-                setTitle("Alarm and Reminder");
-                fTrans.beginTransaction()
-                        .replace(R.id.fragreplace, reminder).commit();
+//                setTitle("Alarm and Reminder");
+//                fTrans.beginTransaction()
+//                        .replace(R.id.fragreplace, reminder).commit();
+
+//              Intent intent =;
+//                startActivity( new Intent(this, AlyarnActivity.class));
+
+//                startActivity(new Intent(this, Alyarm.class));
+
+                btnSportTimer.setTextSize(15);
+                btnReminder.setTextSize(20);
+                btnStopwatch.setTextSize(15);
                 break;
             default:
                 break;
@@ -71,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
