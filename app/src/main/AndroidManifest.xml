@@ -28,8 +28,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Ayarm_Activity" />
-        <activity android:name=".TimeActivity"></activity>
+        />
+        <activity
+            android:name=".resivers.RingAlarm"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Transparent"
+            android:windowSoftInputMode="adjustPan" />
+
+        <receiver android:name=".resivers.AlarmReceiver" />
+
+        <activity
+            android:name=".TimeDate"
+            android:label="@string/title_activity_time_date"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

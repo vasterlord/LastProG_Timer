@@ -15,7 +15,72 @@
         android:id="@+id/fragreplace"
         android:layout_centerHorizontal="true"
         android:background="#ffffff"
-        android:layout_below="@+id/ScrollMenu"></FrameLayout>
+        android:layout_below="@+id/ScrollMenu">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="15dp">
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:orientation="vertical"
+                android:fitsSystemWindows="true"
+                tools:context=".MainActivity">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textViewTime"
+                    android:layout_marginTop="26dp"
+                    android:textColor="#2be700" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="71dp"
+                        android:textAllCaps="false"
+                        android:text="Create alarm"
+                        android:background="#029509"
+                        android:textSize="30dp"
+                        android:id="@+id/buttonChooser"
+                        android:onClick="onChooserClick"
+                        android:textColor="#121489" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="25dp"
+                    android:textColor="#e8e8e8"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="My alarms"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/textView2" />
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/listView" />
+
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
 
     <HorizontalScrollView
         android:layout_width="wrap_content"

@@ -5,12 +5,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,8 +41,16 @@ public class Stopwatch extends Fragment {
     private EditText eTLaps;
     private ScrollView mSVLaps;
     private int lap = 1;
+    private String SOPWATH_TIME_STOP = "sts";
+    private String BUTTON_STP_TEXT = "bt";
+    private String BUTTON_RESTART = "rs";
+    private String VALUE1 = "v1";
+    private String VALUE2 = "v2";
+
     MediaPlayer mPlayerstart;
     Typeface tf;
+    SharedPreferences sharedPreferencesTimeS;
+    private long systemTimeStopwath = 0;
     public Stopwatch(){
         this.updateTimerThread = new Runnable() {
             public void run() {
@@ -100,6 +110,7 @@ public class Stopwatch extends Fragment {
                     resetLapButton.setText("Reset");
                     return;
                 }
+
                 Stopwatch.this.startPauseButton.setText((CharSequence) "Pause");
                 Stopwatch.access$5(Stopwatch.this, SystemClock.uptimeMillis());
                 Stopwatch.this.customHandler.postDelayed(Stopwatch.this.updateTimerThread, 0);
@@ -157,15 +168,92 @@ public class Stopwatch extends Fragment {
                         lap++;
                     }
                 }
-
             }
         });
+
+
         return v;
     }
 
+    private void savePref(long Time, String bt, String rs, String v1, String v2) {
+
+            SharedPreferences.Editor editor = sharedPreferencesTimeS.edit();
+        if(startPauseButton.getText().equals("Pause")) {
+            editor.putLong(SOPWATH_TIME_STOP, Time);
+            editor.apply();
+        }
+        else
+        {
+            editor.putString(VALUE1, v1);
+            editor.apply();
+            editor.putString(VALUE2, v2);
+            editor.apply();
+        }
+            editor.putString(BUTTON_STP_TEXT, bt);
+            editor.apply();
+            editor.putString(BUTTON_RESTART, rs);
+            editor.apply();
+
+    }
+
+
+    private long loadPrefPause(){
+        sharedPreferencesTimeS = getActivity().getSharedPreferences(SOPWATH_TIME_STOP , Context.MODE_PRIVATE);
+        long svaVal = sharedPreferencesTimeS.getLong(SOPWATH_TIME_STOP, 0);
+        return svaVal;
+    }
+
+    private String loadPrefButoonStay(){
+        sharedPreferencesTimeS = getActivity().getSharedPreferences(SOPWATH_TIME_STOP , Context.MODE_PRIVATE);
+        String svaVal2 = sharedPreferencesTimeS.getString(BUTTON_STP_TEXT, "");
+        return svaVal2;
+    }
+
+    private String loadPrefButoonRes(){
+        sharedPreferencesTimeS = getActivity().getSharedPreferences(SOPWATH_TIME_STOP , Context.MODE_PRIVATE);
+        String svaVal = sharedPreferencesTimeS.getString(BUTTON_RESTART, "");
+        return svaVal;
+    }
+
+    private String loadPrefVal1(){
+        sharedPreferencesTimeS = getActivity().getSharedPreferences(SOPWATH_TIME_STOP , Context.MODE_PRIVATE);
+        String svaVal2 = sharedPreferencesTimeS.getString(VALUE1, "");
+        return svaVal2;
+    }
+
+    private String loadPrefVal2(){
+        sharedPreferencesTimeS = getActivity().getSharedPreferences(SOPWATH_TIME_STOP , Context.MODE_PRIVATE);
+        String svaVal = sharedPreferencesTimeS.getString(VALUE2, "");
+        return svaVal;
+    }
+
+
+    @Override
     public void onPause() {
         super.onPause();
+      savePref(systemTimeStopwath, startPauseButton.getText().toString(), resetLapButton.getText().toString(), timerValue.getText().toString(), timerValue2.getText().toString());
+
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (loadPrefButoonStay() != "" && updatedTime!=0) {
+            startPauseButton.setText(loadPrefButoonStay());
+            resetLapButton.setText(loadPrefButoonRes());
+        }
+        if (loadPrefButoonStay().equals("Pause")){
+            this.systemTimeStopwath = SystemClock.uptimeMillis()-loadPrefPause();
+        }
+
+        if (startPauseButton.getText().toString().equals("Start"))
+        if(loadPrefVal1()!=""&& updatedTime!=0)
+        {
+            timerValue.setText(loadPrefVal1());
+            timerValue2.setText(loadPrefVal2());
+        }
+    }
+
 
     public void updateDigits() {
         this.timeInMilliseconds = SystemClock.uptimeMillis() - this.startTime;

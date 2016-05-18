@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:background="@drawable/bg_wall_post">
+        android:background="#a5a5a5">
 
         <TextView
             android:layout_width="match_parent"

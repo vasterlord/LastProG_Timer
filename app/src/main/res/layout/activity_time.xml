@@ -1,49 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="timerbench.com.timerbench.TimeDate">
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:id="@+id/scrollView">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <timerbench.com.timerbench.custom.CustomDatePicker
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/datePicker" />
+    </android.support.design.widget.AppBarLayout>
 
-            <timerbench.com.timerbench.custom.CustomTimePicker
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/timePicker" />
+    <include layout="@layout/content_time" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textColor="#000"
-                android:hint="Type message here"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textViewMessage"
-                android:textSize="18sp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:text="Create"
-                android:id="@+id/createButton"
-                android:onClick="onCreateClick"/>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
