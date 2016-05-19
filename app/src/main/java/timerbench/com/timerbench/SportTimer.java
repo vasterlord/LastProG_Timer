@@ -72,6 +72,9 @@ public class SportTimer extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    NumberPicker npHours;
+    NumberPicker npMinutes;
+    NumberPicker npSeconds;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -128,9 +131,9 @@ public class SportTimer extends Fragment {
         edRounds = (EditText) v.findViewById(R.id.edRounds);
         tf = Typeface.createFromAsset(getContext().getAssets(),"ds-digital.ttf");
         textViewTime.setTypeface(tf);
-        final NumberPicker npHours = (NumberPicker) v.findViewById(R.id.npHours);
-        final NumberPicker npMinutes = (NumberPicker) v.findViewById(R.id.npMinute);
-        final NumberPicker npSeconds = (NumberPicker) v.findViewById(R.id.npSecond);
+        npHours = (NumberPicker) v.findViewById(R.id.npHours);
+        npMinutes = (NumberPicker) v.findViewById(R.id.npMinute);
+        npSeconds = (NumberPicker) v.findViewById(R.id.npSecond);
         npHours.setMaxValue(23);
         npHours.setMinValue(0);
         npHours.setWrapSelectorWheel(false);
@@ -140,6 +143,7 @@ public class SportTimer extends Fragment {
         npSeconds.setMaxValue(59);
         npSeconds.setMinValue(0);
         npSeconds.setWrapSelectorWheel(false);
+
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +158,10 @@ public class SportTimer extends Fragment {
                     }
                     btnStart.setText("Pause");
                     btnStop.setText("Cancel");
-                    pincers.setVisibility(View.INVISIBLE);
+                    pincers.setEnabled(false);
+                    npHours.setEnabled(false);
+                    npMinutes.setEnabled(false);
+                    npSeconds.setEnabled(false);
                     textViewTime.setVisibility(View.VISIBLE);
                     Context context = getContext();
                     Intent notificationIntent = new Intent();
@@ -183,7 +190,8 @@ public class SportTimer extends Fragment {
                     notification.flags = notification.flags | Notification.FLAG_INSISTENT;
                     Notification n = builder.getNotification();
                     nm.notify(1, n);
-                } else if (btnStart.getText().toString().equals("Resume")) {
+                }
+                else if (btnStart.getText().toString().equals("Resume")) {
                     txtTittle.setText(" Work it: ");
                     timeout = textViewTime.getText().toString();
                     String[] split = timeout.split(":");
@@ -195,9 +203,15 @@ public class SportTimer extends Fragment {
                     timer.start();
                     btnStart.setText("Pause");
                     btnStop.setText("Cancel");
-                    pincers.setVisibility(View.INVISIBLE);
+
+
+                    npHours.setEnabled(false);
+                    npMinutes.setEnabled(false);
+                    npSeconds.setEnabled(false);
                     textViewTime.setVisibility(View.VISIBLE);
-                } else {
+                }
+
+                else {
                     txtTittle.setText(" Pause ");
                     timer.cancel();
                     btnStart.setText("Resume");
@@ -206,6 +220,8 @@ public class SportTimer extends Fragment {
             }
 
         });
+
+
         btnStop.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -399,10 +415,12 @@ public class SportTimer extends Fragment {
                 if ((setTimeOption == 4)){
                 timer.start();
                     txtTittle.setText(" Preparing time: ");
-                setTimeOption = 2;}
+                }
             }
             else if (rounds ==  0 ) {
-                pincers.setVisibility(View.VISIBLE);
+                npHours.setEnabled(true);
+                npMinutes.setEnabled(true);
+                npSeconds.setEnabled(true);
                 textViewTime.setText("Good job! ;)");
                 btnStart.setText("Start");
                 btnStop.setText("Reset");

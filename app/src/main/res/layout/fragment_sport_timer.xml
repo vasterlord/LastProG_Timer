@@ -7,13 +7,16 @@
     android:orientation="vertical"
     tools:context=".SportTimer"
     android:background="#ffffff">
+
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/pincers"
         android:visibility="visible"
-        android:layout_marginTop="58dp">
+        android:layout_marginTop="3dp">
 
         <NumberPicker
             android:layout_width="wrap_content"
@@ -42,15 +45,13 @@
             android:solidColor="#2bf3c1"
             android:layout_weight="0.2" />
     </LinearLayout>
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Settings"
         android:layout_weight="0"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal|top">
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="185dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -96,8 +97,6 @@
                 android:background="#6e6e6e" />
         </LinearLayout>
     </HorizontalScrollView>
-
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

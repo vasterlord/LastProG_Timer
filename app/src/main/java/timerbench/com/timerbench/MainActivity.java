@@ -40,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
     Stopwatch stopwatch = new Stopwatch();
     SharedPreferences sharedPreferencesReset;
 
-
-
-
-
     Typeface tf;
     FragmentManager fTrans = getSupportFragmentManager();
     private Camera mCamera;
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView timeTextView;
     private ListView listView;
     private AlyarmAdapter alarmAdapter;
-    private ArrayList<UserAlyarm> userAlarmArrayList;
+    private ArrayList <UserAlyarm> userAlarmArrayList;
     //    ---------------------------------------------------------------------------------------
 //    --------------------------------------------------------------------------------------
 
@@ -165,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == REQUEST_CODE) {
 
             if (data != null && data.getExtras() != null) {

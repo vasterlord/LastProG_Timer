@@ -4,14 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="10dp"
-    android:background="#eeeeee">
+    android:background="#eeeeee"
+    android:weightSum="1">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:background="#a5a5a5">
+        android:background="#a5a5a5"
+        android:layout_weight="4.60">
 
         <TextView
             android:layout_width="match_parent"
@@ -30,6 +32,13 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Time"
             android:id="@+id/textViewTime" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </LinearLayout>
