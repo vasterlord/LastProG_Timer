@@ -25,7 +25,10 @@
             android:background="#ffffff"
             android:solidColor="#38f244"
             android:layout_weight="0.2"
-            android:descendantFocusability="blocksDescendants"/>
+            android:contextClickable="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"/>
 
         <NumberPicker
             android:layout_width="wrap_content"
@@ -33,15 +36,21 @@
             android:id="@+id/npMinute"
             android:background="#ffffff"
             android:solidColor="#d338f2"
-            android:descendantFocusability="blocksDescendants"
-            android:layout_weight="0.2" />
+            android:layout_weight="0.2"
+            android:contextClickable="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"/>
 
         <NumberPicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/npSecond"
+            android:contextClickable="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:longClickable="false"
             android:background="#ffffff"
-            android:descendantFocusability="blocksDescendants"
             android:solidColor="#2bf3c1"
             android:layout_weight="0.2" />
     </LinearLayout>

@@ -51,7 +51,6 @@ public class SportTimer extends Fragment {
     int rounds = 1;
     private static int [] parts = new int[3];
     private static long[] full = new long[3];
-   // ArrayList working= new ArrayList();
     private static int sHour;
     private static int sMinute;
     private static int sSecond;
@@ -67,7 +66,8 @@ public class SportTimer extends Fragment {
     String PREF_NAME2 = "pref2";
     String PREF_NAME3 = "pref3";
     String PREF_NAME4 = "pref4";
-    SharedPreferences sharedPreferences, sharedPreferences2, sharedPreferences3, sharedPreferences4;
+    String PREF_NAME5 = "pref5";
+    SharedPreferences sharedPreferences, sharedPreferences2, sharedPreferences3, sharedPreferences4, sharedPreferences5;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -143,20 +143,26 @@ public class SportTimer extends Fragment {
         npSeconds.setMaxValue(59);
         npSeconds.setMinValue(0);
         npSeconds.setWrapSelectorWheel(false);
-
+        txtTittle.setText("");
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (btnStart.getText().toString().equals("Start")) {
-                        timer = new CounterClass(SportTimer.full[0], 1000);
-                        timer2 = new CounterClass(SportTimer.full[1], 1000);
-                        timer3 = new CounterClass(SportTimer.full[2], 1000);
+                    savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
+                    SportTimer.full[0] = loadPref();
+                    SportTimer.full[1] = loadPref2();
+                    SportTimer.full[2] = loadPref3();
+                    txtTittle.setText(loadPref5());
+                    rounds = loadPref4();
+                    timer = new CounterClass(SportTimer.full[0], 1000);
+                    timer2 = new CounterClass(SportTimer.full[1], 1000);
+                    timer3 = new CounterClass(SportTimer.full[2], 1000);
                     if ((setTimeOption == 1) && (rounds > 0)) {
                         timer.start();
                         txtTittle.setText(" Preparing time: ");
                         setTimeOption = 2;
                     }
-                    btnStart.setText("Pause");
+                    btnStart.setText("Stop");
                     btnStop.setText("Cancel");
                     pincers.setEnabled(false);
                     npHours.setEnabled(false);
@@ -191,7 +197,7 @@ public class SportTimer extends Fragment {
                     Notification n = builder.getNotification();
                     nm.notify(1, n);
                 }
-                else if (btnStart.getText().toString().equals("Resume")) {
+               /* else if (btnStart.getText().toString().equals("Resume")) {
                     txtTittle.setText(" Work it: ");
                     timeout = textViewTime.getText().toString();
                     String[] split = timeout.split(":");
@@ -199,23 +205,30 @@ public class SportTimer extends Fragment {
                     SportTimer.min = TimeUnit.MINUTES.toMinutes(Integer.parseInt(split[1]));
                     SportTimer.sec = TimeUnit.SECONDS.toSeconds(Integer.parseInt(split[2]));
                     SportTimer.time = (1000 * (60 * (60 *  SportTimer.hours)) + 1000 * (60 *  SportTimer.min) + 1000 * (SportTimer.sec) + 500);
-                    timer = new CounterClass(SportTimer.time, 1000);
-                    timer.start();
+                    if ((setTimeOption == 2) && (rounds > 0)) {
+
+                        timer = new CounterClass(SportTimer.time, 1000);
+                        timer.start();
+                        txtTittle.setText(" Preparing time: ");
+                        setTimeOption = 2;
+                    }
                     btnStart.setText("Pause");
                     btnStop.setText("Cancel");
-
-
                     npHours.setEnabled(false);
                     npMinutes.setEnabled(false);
                     npSeconds.setEnabled(false);
                     textViewTime.setVisibility(View.VISIBLE);
-                }
+                }*/
 
                 else {
-                    txtTittle.setText(" Pause ");
                     timer.cancel();
-                    btnStart.setText("Resume");
-                    btnStop.setText("Cancel");
+                    btnStart.setText("Start");
+                    btnStop.setText("Reset");
+                    pincers.setEnabled(true);
+                    npHours.setEnabled(true);
+                    npMinutes.setEnabled(true);
+                    npSeconds.setEnabled(true);
+                    textViewTime.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -227,17 +240,27 @@ public class SportTimer extends Fragment {
             public void onClick(View v) {
                 txtTittle.setText(" ");
                 if (btnStop.getText().toString().equals("Cancel")) {
-                    timer.onFinish();
+                 //   timer.onFinish();
                     timer.cancel();
                     btnStart.setText("Start");
                     btnStop.setText("Reset");
+                    pincers.setEnabled(true);
+                    npHours.setEnabled(true);
+                    npMinutes.setEnabled(true);
+                    npSeconds.setEnabled(true);
+                    textViewTime.setVisibility(View.VISIBLE);
                 } else {
-                    txtTittle.setText(" ");
                     btnStart.setText("Start");
                     npHours.setValue(0);
                     npMinutes.setValue(0);
                     npSeconds.setValue(0);
                     textViewTime.setText("00:00:00");
+                    timer.cancel();
+                    pincers.setEnabled(true);
+                    npHours.setEnabled(true);
+                    npMinutes.setEnabled(true);
+                    npSeconds.setEnabled(true);
+                    textViewTime.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -341,11 +364,12 @@ public class SportTimer extends Fragment {
         });
         return v;
     }
-    private void savePref(long sRes, long sRes2, long sRes3, int sRes4){
+    private void savePref(long sRes, long sRes2, long sRes3, int sRes4, String sRes5){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         SharedPreferences.Editor editor2 = sharedPreferences2.edit();
         SharedPreferences.Editor editor3 = sharedPreferences3.edit();
         SharedPreferences.Editor editor4 = sharedPreferences4.edit();
+        SharedPreferences.Editor editor5 = sharedPreferences5.edit();
         editor.putLong(PREF_NAME, sRes);
         editor.apply();
         editor2.putLong(PREF_NAME2, sRes2);
@@ -354,6 +378,8 @@ public class SportTimer extends Fragment {
         editor3.apply();
         editor4.putInt(PREF_NAME4, sRes4);
         editor4.apply();
+        editor5.putString(PREF_NAME5, sRes5);
+        editor5.apply();
     }
 
     private long loadPref(){
@@ -376,11 +402,15 @@ public class SportTimer extends Fragment {
         int svaVal4 = sharedPreferences4.getInt(PREF_NAME4, rounds);
         return svaVal4;
     }
-
+    private String loadPref5(){
+        sharedPreferences5 = getActivity().getSharedPreferences(PREF_NAME5 , Context.MODE_PRIVATE);
+        String svaVal5 = sharedPreferences5.getString(PREF_NAME5, "");
+        return svaVal5;
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds);
+        savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
     }
 
 
@@ -390,8 +420,21 @@ public class SportTimer extends Fragment {
         SportTimer.full[0] = loadPref();
         SportTimer.full[1] = loadPref2();
         SportTimer.full[2] = loadPref3();
+        txtTittle.setText(loadPref5());
         rounds = loadPref4();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        SportTimer.full[0] = loadPref();
+        SportTimer.full[1] = loadPref2();
+        SportTimer.full[2] = loadPref3();
+        txtTittle.setText(loadPref5());
+        rounds = loadPref4();
+    }
+
+
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     @SuppressLint("NewApi")
     public class CounterClass extends CountDownTimer {
@@ -401,7 +444,7 @@ public class SportTimer extends Fragment {
         public void onFinish() {
 
             if ((setTimeOption == 2)&&(rounds > 0)){
-                txtTittle.setText(" Round/set:"+ rounds);
+                txtTittle.setText(" Round/set:"+ (rounds-(rounds-1)));
                 timer2.start();
                 setTimeOption = 3;
             }
@@ -411,13 +454,12 @@ public class SportTimer extends Fragment {
                 setTimeOption = 4;
                 rounds = rounds - 1;
             }
-            else if ((rounds > 0)){
-                if ((setTimeOption == 4)){
+            else if ((setTimeOption == 4)&&(rounds > 0)){
                 timer.start();
-                    txtTittle.setText(" Preparing time: ");
-                }
+                txtTittle.setText(" Preparing time: ");
+                setTimeOption = 2;
             }
-            else if (rounds ==  0 ) {
+            else if (rounds ==  0) {
                 npHours.setEnabled(true);
                 npMinutes.setEnabled(true);
                 npSeconds.setEnabled(true);
@@ -470,13 +512,13 @@ public class SportTimer extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds);
+        savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds);
+        savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
     }
 
     // TODO: Rename method, update argument and hook method into UI event

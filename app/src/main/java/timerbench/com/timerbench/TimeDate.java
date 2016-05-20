@@ -24,6 +24,7 @@ public class TimeDate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time);
+        setTitle("Set date and time");
         pickerDate = (DatePicker) findViewById(R.id.datePicker);
         pickerTime = (TimePicker) findViewById(R.id.timePicker);
         messageTextView = (TextView) findViewById(R.id.textViewMessage);
