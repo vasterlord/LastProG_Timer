@@ -49,6 +49,7 @@ public class SportTimer extends Fragment {
     LinearLayout pincers;
     String tm,timeout;
     int rounds = 1;
+    int end = 0;
     private static int [] parts = new int[3];
     private static long[] full = new long[3];
     private static int sHour;
@@ -143,20 +144,20 @@ public class SportTimer extends Fragment {
         npSeconds.setMaxValue(59);
         npSeconds.setMinValue(0);
         npSeconds.setWrapSelectorWheel(false);
+        txtTittle.setText(loadPref5());
+        rounds = loadPref4();
+        timer = new CounterClass(SportTimer.full[0], 1000);
+        timer2 = new CounterClass(SportTimer.full[1], 1000);
+        timer3 = new CounterClass(SportTimer.full[2], 1000);
         txtTittle.setText("");
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (btnStart.getText().toString().equals("Start")) {
-                    savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
+              /*      savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
                     SportTimer.full[0] = loadPref();
                     SportTimer.full[1] = loadPref2();
-                    SportTimer.full[2] = loadPref3();
-                    txtTittle.setText(loadPref5());
-                    rounds = loadPref4();
-                    timer = new CounterClass(SportTimer.full[0], 1000);
-                    timer2 = new CounterClass(SportTimer.full[1], 1000);
-                    timer3 = new CounterClass(SportTimer.full[2], 1000);
+                    SportTimer.full[2] = loadPref3();*/
                     if ((setTimeOption == 1) && (rounds > 0)) {
                         timer.start();
                         txtTittle.setText(" Preparing time: ");
@@ -229,6 +230,7 @@ public class SportTimer extends Fragment {
                     npMinutes.setEnabled(true);
                     npSeconds.setEnabled(true);
                     textViewTime.setVisibility(View.VISIBLE);
+                    end = 1;
                 }
             }
 
@@ -444,7 +446,7 @@ public class SportTimer extends Fragment {
         public void onFinish() {
 
             if ((setTimeOption == 2)&&(rounds > 0)){
-                txtTittle.setText(" Round/set:"+ (rounds-(rounds-1)));
+                txtTittle.setText(" Round/set:"+ (rounds));
                 timer2.start();
                 setTimeOption = 3;
             }
@@ -459,7 +461,7 @@ public class SportTimer extends Fragment {
                 txtTittle.setText(" Preparing time: ");
                 setTimeOption = 2;
             }
-            else if (rounds ==  0) {
+            else if ((rounds ==  0)||(end == 1)) {
                 npHours.setEnabled(true);
                 npMinutes.setEnabled(true);
                 npSeconds.setEnabled(true);
