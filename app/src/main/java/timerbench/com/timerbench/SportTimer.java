@@ -144,17 +144,16 @@ public class SportTimer extends Fragment {
         npSeconds.setMaxValue(59);
         npSeconds.setMinValue(0);
         npSeconds.setWrapSelectorWheel(false);
-        txtTittle.setText(loadPref5());
-        rounds = loadPref4();
-        timer = new CounterClass(SportTimer.full[0], 1000);
-        timer2 = new CounterClass(SportTimer.full[1], 1000);
-        timer3 = new CounterClass(SportTimer.full[2], 1000);
         txtTittle.setText("");
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                timer = new CounterClass(SportTimer.full[0], 1000);
+                timer2 = new CounterClass(SportTimer.full[1], 1000);
+                timer3 = new CounterClass(SportTimer.full[2], 1000);
+                savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
                 if (btnStart.getText().toString().equals("Start")) {
-              /*      savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
+              /*
                     SportTimer.full[0] = loadPref();
                     SportTimer.full[1] = loadPref2();
                     SportTimer.full[2] = loadPref3();*/
