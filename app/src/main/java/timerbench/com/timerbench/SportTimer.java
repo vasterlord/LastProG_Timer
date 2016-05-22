@@ -51,7 +51,10 @@ public class SportTimer extends Fragment {
     int rounds = 1;
     int end = 0;
     private static int [] parts = new int[3];
+    private static int [] parts1 = new int[3];
+    private static int [] parts2 = new int[3];
     private static long[] full = new long[3];
+    long[] mfull = new long[3];
     private static int sHour;
     private static int sMinute;
     private static int sSecond;
@@ -59,7 +62,7 @@ public class SportTimer extends Fragment {
     private static long hours;
     private static long min;
     private static long sec;
-    CounterClass timer,timer2,timer3;
+    CounterClass timer,timer2,timer3, timer4;
     MediaPlayer mPlayerstart , mPlayerfinish;
     int setTimeOption = 1;
     int i = 0;
@@ -148,16 +151,20 @@ public class SportTimer extends Fragment {
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer = new CounterClass(SportTimer.full[0], 1000);
-                timer2 = new CounterClass(SportTimer.full[1], 1000);
-                timer3 = new CounterClass(SportTimer.full[2], 1000);
-                savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
+                SportTimer.full[0] = mfull[0];
+                SportTimer.full[1] = mfull[1];
+                SportTimer.full[2] = mfull[2];
+
+             //   savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
                 if (btnStart.getText().toString().equals("Start")) {
               /*
                     SportTimer.full[0] = loadPref();
                     SportTimer.full[1] = loadPref2();
                     SportTimer.full[2] = loadPref3();*/
+                    //timer2 = new CounterClass(SportTimer.full[1], 1000);
+                    //timer3 = new CounterClass(SportTimer.full[2], 1000);
                     if ((setTimeOption == 1) && (rounds > 0)) {
+                        timer = new CounterClass(SportTimer.full[0], 1000);
                         timer.start();
                         txtTittle.setText(" Preparing time: ");
                         setTimeOption = 2;
@@ -312,39 +319,41 @@ public class SportTimer extends Fragment {
                     toast.show();
                 }
                 SportTimer.full[0] = (1000 * (60 * (60 *  SportTimer.parts[0])) + 1000 * (60 *  SportTimer.parts[1]) + 1000 * ( SportTimer.parts[2]) + 500);
+                mfull[0] =  SportTimer.full[0];
             }
         });
         btnWork.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if ((npHours.getValue() == 0) && (npMinutes.getValue() == 0) && (npSeconds.getValue() == 0)) {
-                    SportTimer.parts[0] = 0;
-                    SportTimer.parts[1] = 0;
-                    SportTimer.parts[2] = 10;
+                    SportTimer.parts1[0] = 0;
+                    SportTimer.parts1[1] = 0;
+                    SportTimer.parts1[2] = 10;
                     Toast toast = Toast.makeText(getContext(),
                             "Preparing time: " + " "+ "hours:" +  " "+ "0" + "  ||  "  + "minutes:" + " "+ "0"+ "  ||  " + "seconds:" + " "+ "10"  , Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
                 } else {
-                    SportTimer.parts[0] = npHours.getValue();
-                    SportTimer.parts[1] = npMinutes.getValue();
-                    SportTimer.parts[2] = npSeconds.getValue();
+                    SportTimer.parts1[0] = npHours.getValue();
+                    SportTimer.parts1[1] = npMinutes.getValue();
+                    SportTimer.parts1[2] = npSeconds.getValue();
                     Toast toast = Toast.makeText(getContext(),
                             "Working time: " + " "+ "hours:" + " " + npHours.getValue()+ "  ||  "  + "minutes:" + " "+ npMinutes.getValue() + "  ||  "  + "seconds:" + " "+ npSeconds.getValue()  , Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
                 }
-                SportTimer.full[1] = (1000 * (60 * (60 * SportTimer.parts[0])) + 1000 * (60 * SportTimer.parts[1]) + 1000 * (SportTimer.parts[2]) + 500);
-            }
+                SportTimer.full[1] = (1000 * (60 * (60 * SportTimer.parts1[0])) + 1000 * (60 * SportTimer.parts1[1]) + 1000 * (SportTimer.parts1[2]) + 500);
+                mfull[1] =  SportTimer.full[1];
+             }
         });
         btnRest.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if ((npHours.getValue()==0)&&(npMinutes.getValue()==0)&&(npSeconds.getValue()==0))
                 {
-                    SportTimer.parts[0] = 0;
-                    SportTimer.parts[1] = 0;
-                    SportTimer.parts[2] = 5;
+                    SportTimer.parts2[0] = 0;
+                    SportTimer.parts2[1] = 0;
+                    SportTimer.parts2[2] = 5;
                     Toast toast = Toast.makeText(getContext(),
                             "Preparing time: " + " "+ "hours:" +  " "+ "0" + "  ||  "  + "minutes:" + " "+ "0"+ "  ||  " + "seconds:" + " "+ "0"  , Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP, 0, 0);
@@ -356,12 +365,13 @@ public class SportTimer extends Fragment {
                         "Resting time: " + " "+ "hours:" + " "+ npHours.getValue() + "  ||  " + "minutes:" + " " + npMinutes.getValue() + "  ||  " + "seconds:" + " "+ npSeconds.getValue()  , Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
-                    SportTimer.parts[0] = npHours.getValue();
-                    SportTimer.parts[1] = npMinutes.getValue();
-                    SportTimer.parts[2] = npSeconds.getValue();
+                    SportTimer.parts2[0] = npHours.getValue();
+                    SportTimer.parts2[1] = npMinutes.getValue();
+                    SportTimer.parts2[2] = npSeconds.getValue();
                 }
-                SportTimer.full[2] = (1000 * (60 * (60 *  SportTimer.parts[0])) + 1000 * (60 *  SportTimer.parts[1]) + 1000 * ( SportTimer.parts[2]) + 500);
-             }
+                SportTimer.full[2] = (1000 * (60 * (60 *  SportTimer.parts2[0])) + 1000 * (60 *  SportTimer.parts2[1]) + 1000 * ( SportTimer.parts2[2]) + 500);
+                mfull[2] =  SportTimer.full[2];
+              }
         });
         return v;
     }
@@ -446,17 +456,20 @@ public class SportTimer extends Fragment {
 
             if ((setTimeOption == 2)&&(rounds > 0)){
                 txtTittle.setText(" Round/set:"+ (rounds));
+                timer2 = new CounterClass(SportTimer.full[1], 1000);
                 timer2.start();
                 setTimeOption = 3;
             }
             else if ((setTimeOption == 3)&&(rounds > 0)){
+                timer2 = new CounterClass(SportTimer.full[2], 1000);
                 timer3.start();
                 txtTittle.setText(" Resting time: ");
                 setTimeOption = 4;
                 rounds = rounds - 1;
             }
             else if ((setTimeOption == 4)&&(rounds > 0)){
-                timer.start();
+                timer4 = new CounterClass(SportTimer.full[0], 1000);
+                timer4.start();
                 txtTittle.setText(" Preparing time: ");
                 setTimeOption = 2;
             }
