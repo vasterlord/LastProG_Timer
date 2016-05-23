@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SportTimer"
-    android:background="#ffffff">
+    android:background="#e3fcec">
 
 
 
@@ -16,42 +16,38 @@
         android:layout_height="wrap_content"
         android:id="@+id/pincers"
         android:visibility="visible"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:background="#e3fcec">
+
+
 
         <NumberPicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/npHours"
-            android:background="#ffffff"
-            android:solidColor="#38f244"
+            android:background="#d9fed2"
+            android:solidColor="#f9f4f4"
             android:layout_weight="0.2"
-            android:contextClickable="false"
-            android:clickable="false"
-            android:focusable="false"
-            android:longClickable="false"/>
+            android:descendantFocusability="blocksDescendants"
+            android:layout_marginRight="3dp" />
 
         <NumberPicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/npMinute"
-            android:background="#ffffff"
-            android:solidColor="#d338f2"
+            android:background="#d9fed2"
+            android:solidColor="#f9f4f4"
+            android:descendantFocusability="blocksDescendants"
             android:layout_weight="0.2"
-            android:contextClickable="false"
-            android:clickable="false"
-            android:focusable="false"
-            android:longClickable="false"/>
+            android:layout_marginRight="3dp" />
 
         <NumberPicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/npSecond"
-            android:contextClickable="false"
-            android:clickable="false"
-            android:focusable="false"
-            android:longClickable="false"
-            android:background="#ffffff"
-            android:solidColor="#2bf3c1"
+            android:background="#d9fed2"
+            android:descendantFocusability="blocksDescendants"
+            android:solidColor="#f9f4f4"
             android:layout_weight="0.2" />
     </LinearLayout>
     <HorizontalScrollView
@@ -76,7 +72,7 @@
                 android:id="@+id/btnRounds"
                 android:textColor="#12ffb8"
                 android:textSize="@dimen/dp22"
-                android:background="#3b3b3b" />
+                android:background="#e3d1d1" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -85,7 +81,7 @@
                 android:id="@+id/btnPrepare"
                 android:textColor="#b012ff"
                 android:textSize="@dimen/dp22"
-                android:background="#535353" />
+                android:background="#ecb7b7" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -94,7 +90,7 @@
                 android:id="@+id/btnWork"
                 android:textColor="#ff1259"
                 android:textSize="@dimen/dp22"
-                android:background="#575757" />
+                android:background="#e3d1d1" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -103,7 +99,7 @@
                 android:id="@+id/btnRest"
                 android:textColor="#0586f7"
                 android:textSize="@dimen/dp22"
-                android:background="#6e6e6e" />
+                android:background="#ecb7b7" />
         </LinearLayout>
     </HorizontalScrollView>
     <Button
@@ -125,7 +121,7 @@
         android:layout_marginTop="50dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ff1a79"
-        android:background="#ffffff"
+        android:background="#e3fcec"
         android:layout_marginRight="0dp"
         android:layout_marginLeft="0dp"
         android:text="00:00:00"
@@ -189,5 +185,32 @@
         android:textSize="@dimen/dp25"
         android:contextClickable="true"
         android:clickable="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Hours"
+        android:id="@+id/textView3"
+        android:layout_marginLeft="25dp"
+        android:textColor="#75a57d" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Minute"
+        android:id="@+id/textView4"
+        android:layout_marginLeft="150dp"
+        android:textColor="#75a57d" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Second"
+        android:id="@+id/textView5"
+        android:layout_marginLeft="280dp"
+        android:textColor="#75a57d" />
 
 </FrameLayout>

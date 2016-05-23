@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import timerbench.com.timerbench.adapters.AlyarmAdapter;
 import timerbench.com.timerbench.model.UserAlyarm;
@@ -167,10 +168,9 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bundle = data.getExtras();
                 String message = bundle.getString("message", "Alarm started");
                 Calendar calendar = (Calendar) bundle.get("calendar");
-
+                UserAlyarm userAlarm = new UserAlyarm();
                 if (calendar != null) {
                     startAlert(calendar, message);
-                    UserAlyarm userAlarm = new UserAlyarm();
                     userAlarm.setMessage(message);
                     userAlarm.setTime(DateFormat.getDateTimeInstance().format(calendar.getTime()));
                     userAlarmArrayList.add(0, userAlarm);
@@ -181,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startAlert(Calendar calendar, String message) {
+//        List<Intent> intents = new ArrayList<>();
+//        intents.add(0, new Intent(this, AlarmReceiver.class).putExtra("message", message));
         Intent intent = new Intent(this, AlarmReceiver.class);
         intent.putExtra("message", message);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), REQUEST_CODE_ALERT, intent, 0);

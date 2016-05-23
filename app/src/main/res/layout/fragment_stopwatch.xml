@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context=".Stopwatch"
-    android:background="#020202">
+    android:background="#e3fcec">
 
     android:background="#020202">
 
@@ -26,8 +26,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#020202">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,7 +64,6 @@
                 android:id="@+id/sv_laps"
                 android:layout_width="match_parent"
                 android:layout_height="177dp"
-                android:background="#020202"
                 android:layout_alignParentBottom="true">
 
                 <EditText
@@ -76,8 +74,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#028dff"
                     android:enabled="true"
-                    android:editable="false"
-                    android:background="#030303" />
+                    android:editable="false" />
 
             </ScrollView>
 
@@ -97,7 +94,7 @@
                 android:layout_weight="1"
                 android:textSize="40dp"
                 android:textColor="#07fd20"
-                android:background="#000000" />
+                android:background="#e3fcec" />
 
             <Button
                 android:layout_width="match_parent"
@@ -107,7 +104,7 @@
                 android:layout_weight="1"
                 android:textSize="40dp"
                 android:textColor="#fd071c"
-                android:background="#000000" />
+                android:background="#e3fcec" />
         </LinearLayout>
 
     </LinearLayout>

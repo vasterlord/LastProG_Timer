@@ -474,6 +474,7 @@ public class SportTimer extends Fragment {
                 setTimeOption = 2;
             }
             else if ((rounds ==  0)||(end == 1)) {
+                setTimeOption = 1;
                 npHours.setEnabled(true);
                 npMinutes.setEnabled(true);
                 npSeconds.setEnabled(true);

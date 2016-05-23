@@ -15,17 +15,19 @@ import timerbench.com.timerbench.model.UserAlyarm;
         */
 public class AlarmReceiver extends BroadcastReceiver {
 
+
+//    ArrayList<Intent> intents = new ArrayList<>();
     @Override
     public void onReceive(Context context, Intent intent) {
-//        List<Intent> intents = new ArrayList<>();
+
+//        intents.add(intent);
+//
 //        Log.d("TAG", "ALERT!!");
-//
-//        intents.add(new Intent(context, RingAlarm.class));
+//        Intent intent1 = new Intent(context, RingAlarm.class);
 //        String message = intent.getExtras().getString("message", "Alarm started");
-//
-//        intents.get(0).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        intents.get(0).putExtra("message",message);
-//        context.startActivity( intents.get(0));
+//        intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent1.putExtra("message",message);
+//        context.startActivity(intent1);
 
         Log.d("TAG", "ALERT!!");
         Intent intent1 = new Intent(context, RingAlarm.class);
@@ -34,4 +36,5 @@ public class AlarmReceiver extends BroadcastReceiver {
         intent1.putExtra("message",message);
         context.startActivity(intent1);
     }
+
 }

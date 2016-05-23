@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import timerbench.com.timerbench.R;
 import timerbench.com.timerbench.model.UserAlyarm;
@@ -19,15 +21,16 @@ import timerbench.com.timerbench.model.UserAlyarm;
  */
 public class AlyarmAdapter extends BaseAdapter {
 
-//    private final Context context;
+    private final Context context;
     private final ArrayList<UserAlyarm> alarmArrayList;
     private final LayoutInflater inflater;
 
     public AlyarmAdapter(Context context, ArrayList<UserAlyarm> alarmArrayList) {
-//        this.context = context;
+        this.context = context;
+//      this.alarmArrayList.addAll(alarmArrayList);
         this.alarmArrayList = alarmArrayList;
-//        inflater = LayoutInflater.from(this.context);
-        inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        inflater = LayoutInflater.from(this.context);
+     //   inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -59,9 +62,20 @@ public class AlyarmAdapter extends BaseAdapter {
             mViewHolder = (MyViewHolder) convertView.getTag();
         }
 
+//        Button buttonRem = (Button) view.findViewById(R.id.buttonRemovs);
+//        ListView  listView = (ListView) view.findViewById(R.id.listView);
+//        buttonRem.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               listView.removeFooterView(v);
+//            }
+//        });
+
         UserAlyarm userAlarm = alarmArrayList.get(position);
         mViewHolder.textViewMessage.setText(userAlarm.getMessage());
         mViewHolder.textViewTime.setText(userAlarm.getTime());
+
+
 
         return convertView;
     }

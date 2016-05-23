@@ -14,10 +14,9 @@
             android:layout_height="wrap_content">
 
             <timerbench.com.timerbench.custom.CustomDatePicker
-                android:layout_width="match_parent"
+                android:layout_width="394dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/datePicker"
-                android:layout_marginTop="30dp"/>
+                android:id="@+id/datePicker" />
 
             <timerbench.com.timerbench.custom.CustomTimePicker
                 android:layout_width="match_parent"

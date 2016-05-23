@@ -22,7 +22,8 @@
             android:textColor="#000"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Message"
-            android:id="@+id/textViewMessage" />
+            android:id="@+id/textViewMessage"
+            android:layout_marginLeft="40dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -31,14 +32,9 @@
             android:textColor="#313131"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Time"
-            android:id="@+id/textViewTime" />
+            android:id="@+id/textViewTime"
+            android:layout_marginLeft="30dp" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Remove"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </LinearLayout>

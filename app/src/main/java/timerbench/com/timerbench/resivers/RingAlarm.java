@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -34,7 +35,7 @@ public void onCreate(Bundle savedInstanceState) {
         mp = MediaPlayer.create(getApplicationContext(), notification);
         mp.setLooping(true);
         mp.start();
-
+        Log.d("TAG", "ALERT2222!!");
         String message = getIntent().getExtras().getString("message", "Alarm started");
 
         messageTetxtView.setText(message);
