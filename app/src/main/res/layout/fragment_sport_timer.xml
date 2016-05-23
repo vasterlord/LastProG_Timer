@@ -195,7 +195,8 @@
         android:text="Hours"
         android:id="@+id/textView3"
         android:layout_marginLeft="25dp"
-        android:textColor="#75a57d" />
+        android:textColor="#75a57d"
+        android:layout_gravity="left" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -204,7 +205,8 @@
         android:text="Minute"
         android:id="@+id/textView4"
         android:layout_marginLeft="150dp"
-        android:textColor="#75a57d" />
+        android:textColor="#75a57d"
+        android:layout_gravity="center_vertical|top" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -212,7 +214,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Second"
         android:id="@+id/textView5"
-        android:layout_marginLeft="280dp"
-        android:textColor="#75a57d" />
+        android:textColor="#75a57d"
+        android:layout_gravity="right"
+        android:layout_marginRight="25dp" />
 
 </FrameLayout>
