@@ -17,7 +17,8 @@
         android:id="@+id/pincers"
         android:visibility="visible"
         android:layout_marginTop="3dp"
-        android:background="#e3fcec">
+        android:background="#e3fcec"
+        android:layout_gravity="center_vertical|top">
 
 
 
@@ -204,9 +205,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Minute"
         android:id="@+id/textView4"
-        android:layout_marginLeft="150dp"
         android:textColor="#75a57d"
-        android:layout_gravity="center_vertical|top" />
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
