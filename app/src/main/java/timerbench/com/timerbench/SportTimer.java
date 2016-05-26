@@ -49,6 +49,7 @@ public class SportTimer extends Fragment {
     LinearLayout pincers;
     String tm,timeout;
     int rounds = 1;
+    int nrounds = 0;
     int end = 0;
     private static int [] parts = new int[3];
     private static int [] parts1 = new int[3];
@@ -154,15 +155,8 @@ public class SportTimer extends Fragment {
                 SportTimer.full[0] = mfull[0];
                 SportTimer.full[1] = mfull[1];
                 SportTimer.full[2] = mfull[2];
-
-             //   savePref(SportTimer.full[0], SportTimer.full[1], SportTimer.full[2],rounds,txtTittle.getText().toString());
                 if (btnStart.getText().toString().equals("Start")) {
-              /*
-                    SportTimer.full[0] = loadPref();
-                    SportTimer.full[1] = loadPref2();
-                    SportTimer.full[2] = loadPref3();*/
-                    //timer2 = new CounterClass(SportTimer.full[1], 1000);
-                    //timer3 = new CounterClass(SportTimer.full[2], 1000);
+                    rounds = nrounds;
                     if ((setTimeOption == 1) && (rounds > 0)) {
                         timer = new CounterClass(SportTimer.full[0], 1000);
                         timer.start();
@@ -187,9 +181,9 @@ public class SportTimer extends Fragment {
                     Notification.Builder builder = new Notification.Builder(context);
                     mPlayerstart.start();
                   //  Uri ringURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                    long[] vibrate = new long[] { 1000, 1000, 1000, 1000 };
+                    long[] vibrate = new long[] {1000, 1000};
                     builder.setContentIntent(contentIntent)
-                            .setTicker(" OKEY LETS GO!!! ")
+                            .setTicker(" Lets go :) ")
                             .setSmallIcon(R.drawable.clocksicon)
                             .setWhen(System.currentTimeMillis())
                           //  .setSound(ringURI)
@@ -204,29 +198,6 @@ public class SportTimer extends Fragment {
                     Notification n = builder.getNotification();
                     nm.notify(1, n);
                 }
-               /* else if (btnStart.getText().toString().equals("Resume")) {
-                    txtTittle.setText(" Work it: ");
-                    timeout = textViewTime.getText().toString();
-                    String[] split = timeout.split(":");
-                    SportTimer.hours = TimeUnit.HOURS.toHours(Integer.parseInt(split[0]));
-                    SportTimer.min = TimeUnit.MINUTES.toMinutes(Integer.parseInt(split[1]));
-                    SportTimer.sec = TimeUnit.SECONDS.toSeconds(Integer.parseInt(split[2]));
-                    SportTimer.time = (1000 * (60 * (60 *  SportTimer.hours)) + 1000 * (60 *  SportTimer.min) + 1000 * (SportTimer.sec) + 500);
-                    if ((setTimeOption == 2) && (rounds > 0)) {
-
-                        timer = new CounterClass(SportTimer.time, 1000);
-                        timer.start();
-                        txtTittle.setText(" Preparing time: ");
-                        setTimeOption = 2;
-                    }
-                    btnStart.setText("Pause");
-                    btnStop.setText("Cancel");
-                    npHours.setEnabled(false);
-                    npMinutes.setEnabled(false);
-                    npSeconds.setEnabled(false);
-                    textViewTime.setVisibility(View.VISIBLE);
-                }*/
-
                 else {
                     timer.cancel();
                     btnStart.setText("Start");
@@ -236,7 +207,35 @@ public class SportTimer extends Fragment {
                     npMinutes.setEnabled(true);
                     npSeconds.setEnabled(true);
                     textViewTime.setVisibility(View.VISIBLE);
+                    setTimeOption = 1;
                     end = 1;
+                    Context context1 = getContext();
+                    Intent notificationIntent1 = new Intent();
+                    PendingIntent contentIntent1 = PendingIntent.getActivity(context1,
+                            0, notificationIntent1,
+                            PendingIntent.FLAG_CANCEL_CURRENT);
+                    NotificationManager nm1 = (NotificationManager) context1
+                            .getSystemService(Context.NOTIFICATION_SERVICE);
+                    Resources res1 = context1.getResources();
+                    Notification.Builder builder1 = new Notification.Builder(context1);
+                    // Uri ringURI1 = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                    mPlayerfinish.start();
+                    long[] vibrate1 = new long[]{1000, 1000};
+                    builder1.setContentIntent(contentIntent1)
+                            .setTicker("You did it!?!")
+                            .setSmallIcon(R.drawable.clocksicon)
+                            .setWhen(System.currentTimeMillis())
+                            //  .setSound(ringURI1)
+                            .setVibrate(vibrate1)
+                            .setContentTitle(" Notification ")
+                            .setContentText(" Timer stopped ");
+                    Notification notification1 = builder1.build();
+                    notification1.defaults = Notification.DEFAULT_SOUND |
+                            Notification.DEFAULT_VIBRATE;
+                    notification1.flags = notification1.flags | Notification.FLAG_SHOW_LIGHTS;
+                    notification1.flags = notification1.flags | Notification.FLAG_INSISTENT;
+                    Notification n1 = builder1.getNotification();
+                    nm1.notify(1, n1);
                 }
             }
 
@@ -257,6 +256,8 @@ public class SportTimer extends Fragment {
                     npMinutes.setEnabled(true);
                     npSeconds.setEnabled(true);
                     textViewTime.setVisibility(View.VISIBLE);
+                    setTimeOption = 1;
+                    end = 1;
                 } else {
                     btnStart.setText("Start");
                     npHours.setValue(0);
@@ -269,6 +270,8 @@ public class SportTimer extends Fragment {
                     npMinutes.setEnabled(true);
                     npSeconds.setEnabled(true);
                     textViewTime.setVisibility(View.VISIBLE);
+                    setTimeOption = 1;
+                    end = 1;
                 }
             }
         });
@@ -282,6 +285,7 @@ public class SportTimer extends Fragment {
                             "Rounds " + " " + "1" , Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.TOP, 0, 0);
                     toast.show();
+                    nrounds = rounds;
                 }
                 else
                 {
@@ -291,6 +295,7 @@ public class SportTimer extends Fragment {
                     toast.show();
                     rounds = Integer.parseInt(edRounds.getText().toString());
                     edRounds.setText("");
+                    nrounds = rounds;
                 }
 
             }
@@ -459,19 +464,22 @@ public class SportTimer extends Fragment {
                 timer2 = new CounterClass(SportTimer.full[1], 1000);
                 timer2.start();
                 setTimeOption = 3;
+                mPlayerstart.start();
             }
             else if ((setTimeOption == 3)&&(rounds > 0)){
-                timer2 = new CounterClass(SportTimer.full[2], 1000);
+                timer3 = new CounterClass(SportTimer.full[2], 1000);
                 timer3.start();
                 txtTittle.setText(" Resting time: ");
                 setTimeOption = 4;
                 rounds = rounds - 1;
+                mPlayerstart.start();
             }
             else if ((setTimeOption == 4)&&(rounds > 0)){
                 timer4 = new CounterClass(SportTimer.full[0], 1000);
                 timer4.start();
                 txtTittle.setText(" Preparing time: ");
                 setTimeOption = 2;
+                mPlayerstart.start();
             }
             else if ((rounds ==  0)||(end == 1)) {
                 setTimeOption = 1;
@@ -493,7 +501,7 @@ public class SportTimer extends Fragment {
                 Notification.Builder builder1 = new Notification.Builder(context1);
                 // Uri ringURI1 = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 mPlayerfinish.start();
-                long[] vibrate1 = new long[]{1000, 1000, 1000, 1000};
+                long[] vibrate1 = new long[]{1000, 1000};
                 builder1.setContentIntent(contentIntent1)
                         .setTicker("You did it!?!")
                         .setSmallIcon(R.drawable.clocksicon)

@@ -1,5 +1,6 @@
 package timerbench.com.timerbench;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -46,7 +48,6 @@ public class Stopwatch extends Fragment {
     private String BUTTON_RESTART = "rs";
     private String VALUE1 = "v1";
     private String VALUE2 = "v2";
-
     MediaPlayer mPlayerstart;
     Typeface tf;
     SharedPreferences sharedPreferencesTimeS;
@@ -98,6 +99,7 @@ public class Stopwatch extends Fragment {
         Context con = getContext();
         mPlayerstart = MediaPlayer.create(con, R.raw.ok);
         this.startPauseButton.setOnClickListener(new OnClickListener() { /* * Enabled aggressive block sorting */
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             public void onClick(View view) {
                 Stopwatch stopwatch = Stopwatch.this;
                 boolean bl = !Stopwatch.this.startEnabled;
@@ -126,9 +128,9 @@ public class Stopwatch extends Fragment {
                 Notification.Builder builder = new Notification.Builder(context);
                 mPlayerstart.start();
                 //  Uri ringURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                long[] vibrate = new long[] { 1000, 1000, 1000, 1000 };
+                long[] vibrate = new long[] {1000};
                 builder.setContentIntent(contentIntent)
-                        .setTicker(" OKEY LETS GO!!! ")
+                        .setTicker(" Starting ;) ")
                         .setSmallIcon(R.drawable.clocksicon)
                         .setWhen(System.currentTimeMillis())
                         //  .setSound(ringURI)
