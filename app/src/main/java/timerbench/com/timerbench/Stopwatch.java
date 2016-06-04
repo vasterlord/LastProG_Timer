@@ -131,7 +131,7 @@ public class Stopwatch extends Fragment {
                 long[] vibrate = new long[] {1000};
                 builder.setContentIntent(contentIntent)
                         .setTicker(" Starting ;) ")
-                        .setSmallIcon(R.drawable.clocksicon)
+                        .setSmallIcon(R.drawable.clock72)
                         .setWhen(System.currentTimeMillis())
                         //  .setSound(ringURI)
                         .setVibrate(vibrate)

@@ -184,7 +184,7 @@ public class SportTimer extends Fragment {
                     long[] vibrate = new long[] {1000, 1000};
                     builder.setContentIntent(contentIntent)
                             .setTicker(" Lets go :) ")
-                            .setSmallIcon(R.drawable.clocksicon)
+                            .setSmallIcon(R.drawable.clock72)
                             .setWhen(System.currentTimeMillis())
                           //  .setSound(ringURI)
                             .setVibrate(vibrate)
@@ -223,7 +223,7 @@ public class SportTimer extends Fragment {
                     long[] vibrate1 = new long[]{1000, 1000};
                     builder1.setContentIntent(contentIntent1)
                             .setTicker("You did it!?!")
-                            .setSmallIcon(R.drawable.clocksicon)
+                            .setSmallIcon(R.drawable.clock72)
                             .setWhen(System.currentTimeMillis())
                             //  .setSound(ringURI1)
                             .setVibrate(vibrate1)
@@ -504,7 +504,7 @@ public class SportTimer extends Fragment {
                 long[] vibrate1 = new long[]{1000, 1000};
                 builder1.setContentIntent(contentIntent1)
                         .setTicker("You did it!?!")
-                        .setSmallIcon(R.drawable.clocksicon)
+                        .setSmallIcon(R.drawable.clock72)
                         .setWhen(System.currentTimeMillis())
                         //  .setSound(ringURI1)
                         .setVibrate(vibrate1)

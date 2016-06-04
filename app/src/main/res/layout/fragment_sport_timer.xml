@@ -154,7 +154,7 @@
         android:textSize="38dp"
         android:layout_marginLeft="1dp"
         android:layout_marginBottom="0dp"
-        android:layout_marginTop="113dp"
+        android:layout_marginTop="120dp"
         android:visibility="visible"
         android:textStyle="bold|italic"
         android:layout_marginRight="0dp" />
